@@ -4,9 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import store from './modules/store';
+import { Provider } from 'react-redux';
+import WebSocketConnection from './modules/WebSocketConnection';
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <WebSocketConnection host={`ws://ws.channels.honeycombpizza.link/ws/notify/`}>
+        <App />
+      </WebSocketConnection>      
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
